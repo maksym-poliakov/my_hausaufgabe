@@ -1,0 +1,15 @@
+Apple, 1.20, 50
+Banana, 0.80, 100
+Orange, 1.00, 80
+Milk, 2.50, 30
+Bread, 1.80, 40
+Eggs, 3.20, 60
+Cheese, 4.50, 20
+Chicken, 5.80, 25
+Rice, 2.00, 50
+Pasta, 1.50, 70
+Tomato, 1.30, 90
+Potato, 0.70, 120
+Carrot, 0.90, 110
+Yogurt, 1.90, 35
+Juice, 2.80, 45
