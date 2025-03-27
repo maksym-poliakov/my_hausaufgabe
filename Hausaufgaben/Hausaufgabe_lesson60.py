@@ -21,14 +21,13 @@ def print_task_number(task_numb) :
 # Привет, Анна! Тебе 25 лет.
 # TypeError: Аргумент 25 имеет неправильный тип <class 'str'>. Ожидается <class 'int'>.
 
-def validate_args(inp_int,inp_str) :
+def validate_args(*args_valid) :
     def decorator(func) :
         def wrapper(*args,**kwargs):
             try:
-                if not isinstance(args[0],inp_int) :
-                    raise TypeError(f"Аргумент {args[0]} имеет неправильный тип {type(args[0])}. Ожидается {inp_int}.")
-                if not isinstance(args[1],inp_str) :
-                    raise TypeError(f"Аргумент {args[1]} имеет неправильный тип {type(args[1])}. Ожидается {inp_str}.")
+                for _,(arg_valid,arg) in enumerate(zip(args_valid,args)):
+                    if not isinstance(arg,arg_valid) :
+                        raise TypeError(f"Аргумент {arg} имеет неправильный тип {type(arg)}. Ожидается {arg_valid}.")
             except TypeError as e :
                 return e
             return func(*args,**kwargs)
@@ -41,7 +40,7 @@ def greet(age, name):
      return f"Привет, {name}! Тебе {age} лет."
 
 print(print_task_number(1))
-print(greet('25', "Анна"))
+print(greet(25, "Анна"))
 
 # 2. Напишите декоратор log_args, который будет записывать аргументы и результаты вызовов функции
 # в лог-файл. Каждый вызов функции должен быть записан на новой строке в
