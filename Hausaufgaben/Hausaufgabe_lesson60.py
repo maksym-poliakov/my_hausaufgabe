@@ -58,13 +58,15 @@ print(greet('25', "Анна"))
 # Аргументы: 5, 7, Результат: 12
 # Убедитесь, что перед запуском кода у вас создан файл log.txt в той же директории,
 # где находится скрипт Python.
-file_name = "../log.txt"
+file_name = "log.txt"
 logging.basicConfig(filename=file_name,format="%(message)s",
                     level=logging.DEBUG)
 def log_args(func):
     def wrapper(*args,**kwargs):
         result = func(*args,**kwargs)
-        logging.info(f"Аргументы: {args[0]}, {args[1]}, Результат: {result }")
+        arg_str = ','.join(map(str,args)) if args else ''
+        kwargs_str = ','.join(f"{k}={v}" for k, v in kwargs.items()) if kwargs else ''
+        logging.info(f"Аргументы: {arg_str} {kwargs_str } ; Результат: {result }")
         print(f"данные успешно записаны в файл {file_name}")
         return result
     return wrapper
