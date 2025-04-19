@@ -17,7 +17,8 @@ DBCONFIG = { 'host' : 'ich-db.ccegls0svc9m.eu-central-1.rds.amazonaws.com',
             }
 
 def list_date_bases(config_db = None ):
-    conn = mysql.connector.connect(**config_db)
+    actual_config = config_db or DBCONFIG
+    conn = mysql.connector.connect(**actual_config)
     cursor = conn.cursor()
     cursor.execute("SHOW TABLES")
     date_bases = cursor.fetchall()
